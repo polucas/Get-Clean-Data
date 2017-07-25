@@ -1,15 +1,21 @@
 getwd()
+#Download and unpack the data
+if(!file.exists("./data")){dir.create("./data")}
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(fileUrl,destfile="./data/Dataset.zip")
+
+unzip(zipfile="./data/Dataset.zip",exdir="./data")
 #Read train set data (downlaod and stored on local drive)
-x_train <- read.table("./UCI HAR Dataset/train/X_train.txt", header = FALSE)
-y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", header = FALSE)
-subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt", header = FALSE)
+x_train <- read.table("./data/UCI HAR Dataset/train/X_train.txt", header = FALSE)
+y_train <- read.table("./data/UCI HAR Dataset/train/y_train.txt", header = FALSE)
+subject_train <- read.table("./data/UCI HAR Dataset/train/subject_train.txt", header = FALSE)
 #Read test set data
-x_test <- read.table("./UCI HAR Dataset/test/X_test.txt", header = FALSE)
-y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", header = FALSE)
-subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt", header = FALSE)
-#Read features and activity labels
-features <- read.table("./UCI HAR Dataset/features.txt", header = FALSE)
-activities <- read.table("./UCI HAR Dataset/activity_labels.txt", header = FALSE)
+x_test <- read.table("./data/UCI HAR Dataset/test/X_test.txt", header = FALSE)
+y_test <- read.table("./data/UCI HAR Dataset/test/y_test.txt", header = FALSE)
+subject_test <- read.table("./data/UCI HAR Dataset/test/subject_test.txt", header = FALSE)
+#Read features (variables) and activity labels
+features <- read.table("./data/UCI HAR Dataset/features.txt", header = FALSE)
+activities <- read.table("./data/UCI HAR Dataset/activity_labels.txt", header = FALSE)
 #Isolate the vector with feature names
 dim(features)
 summary(features)
